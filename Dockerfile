@@ -10,7 +10,7 @@ COPY package*.json ./
 # installer les dépendences du package
 RUN npm install
 
-#copier le reste des fichiers
+#copier tout le reste des fichiers, dans le container
 COPY . .
 
 #exposer le port 3000 pour le package 'express'

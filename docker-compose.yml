@@ -1,0 +1,24 @@
+services:
+  app:   # image du service
+    build: . #va chercher dans Dockerfile
+    environment:
+      NODE_ENV: development  #lancer .env dev mais en mettant production, lancer .env dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
